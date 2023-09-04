@@ -44,13 +44,12 @@ function once(func1) {
   let count = 0
   let repeatAnswer
   function ans() {
-    repeatAnswer = once(func1)
-    if (count === 1) {
-      return ''
+    if (count === 0) {
+      repeatAnswer = func1()
+      count++
+      return repeatAnswer
     }
-    count++
-    console.log(count)
-    return func1()
+    return repeatAnswer
   }
   return ans
 }
@@ -76,11 +75,26 @@ function composeB(func1, func2) {
   return func3
 }
 
-function limit() {
-  
+function limit(func1, num1) {
+  let count = 0
+  function nestAdd (num2, num3) {
+    if (count < num1) {
+      count++
+    const answer = func1(num2, num3)
+    return answer
+  } else {
+  }
+} return nestAdd
 }
 
-function from() {}
+function from(num1) {
+  let count = num1
+  function nestedCount() {
+    const unInc = count
+    count++
+    return unInc
+  } return nestedCount
+}
 
 function to() {}
 

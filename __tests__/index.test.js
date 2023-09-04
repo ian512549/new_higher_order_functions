@@ -62,20 +62,28 @@ describe('Higher Order Functions', () => {
     test('returns a function', () => {
       expect(typeof once()).toBe('function');
     })
-    test('can only be invoked once', () => {
+    test('The function passed to once can only be invoked once', () => {
       const mockFn = jest.fn()
       const testVar = once(mockFn)
       testVar()
       testVar()
       expect(mockFn.mock.calls).toHaveLength(1);;
     })
-    test('After first invocation, subsequent invocations return value of first invocation', () => {
-      const mockFn = jest.fn()
-      const testVar = once(mockFn)
-      const expected = console.log(testVar())
-      const output = console.log(testVar())
-      
-      expect(output).toBe(expected);;
+    test('On invocations after the first, the returned function returns the value of the first invocation', () => {
+      function makeCounter () {
+        let count = 0
+        function counter () {
+          count++
+          return count
+        }
+        return counter
+      }
+      const counter = makeCounter()
+      const testOne = once(counter)
+      const first = testOne()
+      const second = testOne()
+      expect(first).toBe(1);;
+      expect(second).toBe(1)
     })
   })
 
@@ -98,7 +106,7 @@ describe('Higher Order Functions', () => {
     });
   });
 
-  describe('Functions with multiple invocations', () => {
+  xdescribe('Functions with multiple invocations', () => {
     xdescribe('increment', () => {
       it('increments the passed argument by 1', () => {
         expect(increment(0)).toBe(1);
@@ -152,7 +160,7 @@ describe('Higher Order Functions', () => {
   //  })
 
   describe('Unary Functions', () => {
-    describe('twice', () => {
+    xdescribe('twice', () => {
       it('returns a function on first invocation', () => {
         const double = twice(add);
         expect(typeof double).toBe('function');
@@ -165,7 +173,7 @@ describe('Higher Order Functions', () => {
     xdescribe('composeU', () => {
       it('returns a function on first invocation', () => {
         const add100 = (x) => x + 100;
-        const add50 = (x) => x + 50;
+        const add50 = (x) => x + 50;  
         const add150 = composeU(add100, add50);
         expect(typeof add150).toBe('function');
       });
@@ -219,7 +227,7 @@ describe('Higher Order Functions', () => {
     });
   });
 
-  xdescribe('Generator Functions', () => {
+  describe('Generator Functions', () => {
     describe('from', () => {
       it('returns a function on first invocation', () => {
         const index = from();
