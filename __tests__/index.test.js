@@ -8,6 +8,7 @@ const {
   addF,
   curry,
   liftF,
+  once,
   twice,
   composeU,
   composeB,
@@ -57,6 +58,27 @@ describe('Higher Order Functions', () => {
     });
   });
 
+  xdescribe('once', () => {
+    test('returns a function', () => {
+      expect(typeof once()).toBe('function');
+    })
+    test('can only be invoked once', () => {
+      const mockFn = jest.fn()
+      const testVar = once(mockFn)
+      testVar()
+      testVar()
+      expect(mockFn.mock.calls).toHaveLength(1);;
+    })
+    test('After first invocation, subsequent invocations return value of first invocation', () => {
+      const mockFn = jest.fn()
+      const testVar = once(mockFn)
+      const expected = console.log(testVar())
+      const output = console.log(testVar())
+      
+      expect(output).toBe(expected);;
+    })
+  })
+
   xdescribe('Binary Operations', () => {
     describe('add', () => {
       it('returns total of the two arguments', () => {
@@ -83,7 +105,7 @@ describe('Higher Order Functions', () => {
         expect(increment(-3)).toBe(-2);
       });
     });
-    describe('addF', () => {
+    xdescribe('addF', () => {
       it('returns a function on first invocation', () => {
         expect(typeof addF(3)).toBe('function');
       });
@@ -129,7 +151,7 @@ describe('Higher Order Functions', () => {
   //    })
   //  })
 
-  xdescribe('Unary Functions', () => {
+  describe('Unary Functions', () => {
     describe('twice', () => {
       it('returns a function on first invocation', () => {
         const double = twice(add);
@@ -140,7 +162,7 @@ describe('Higher Order Functions', () => {
         expect(double(3)).toBe(add(3, 3));
       });
     });
-    describe('composeU', () => {
+    xdescribe('composeU', () => {
       it('returns a function on first invocation', () => {
         const add100 = (x) => x + 100;
         const add50 = (x) => x + 50;

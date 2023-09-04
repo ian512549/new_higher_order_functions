@@ -40,7 +40,27 @@ function liftF(func1) {
   return ans
 }
 
-function twice() {}
+function once(func1) {
+  let count = 0
+  let repeatAnswer
+  function ans() {
+    repeatAnswer = once(func1)
+    if (count === 1) {
+      return ''
+    }
+    count++
+    console.log(count)
+    return func1()
+  }
+  return ans
+}
+
+function twice(func1) {
+  function innerFunc(num) {
+    return func1(num, num)
+  }
+  return innerFunc
+}
 
 function composeU() {}
 
@@ -82,6 +102,7 @@ module.exports = {
   addF,
   curry,
   liftF,
+  once,
   twice,
   composeU,
   composeB,
