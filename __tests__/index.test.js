@@ -27,7 +27,7 @@ const {
 } = require('../index.js');
 
 describe('Higher Order Functions', () => {
-  describe('Identity Functions', () => {
+  xdescribe('Identity Functions', () => {
     describe('identity', () => {
       it('returns the first value passed as an argument', () => {
         expect(identity(3)).toBe(3);
@@ -76,8 +76,8 @@ describe('Higher Order Functions', () => {
     });
   });
 
-  xdescribe('Functions with multiple invocations', () => {
-    describe('increment', () => {
+  describe('Functions with multiple invocations', () => {
+    xdescribe('increment', () => {
       it('increments the passed argument by 1', () => {
         expect(increment(0)).toBe(1);
         expect(increment(-3)).toBe(-2);

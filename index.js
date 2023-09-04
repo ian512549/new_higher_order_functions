@@ -7,15 +7,28 @@ function identityF(param) {
     return ans
 }
 
-function add() {} 
+function add(num1, num2) {
+  return num1 + num2
+} 
 
-function subtract() {}
+function subtract(num1, num2) {
+  return num1 - num2
+}
 
-function multiply() {}
+function multiply(num1, num2) {
+  return num1 * num2
+}
 
-function increment() {}
+function increment(num1) {
+  const answer = identity(num1) + 1
+  return answer
 
-function addF() {}
+}
+
+function addF(num1) {
+  let ans = (num2)=> num1 + num2
+    return ans
+}
 
 function curry() {}
 
