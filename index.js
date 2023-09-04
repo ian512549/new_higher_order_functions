@@ -1,8 +1,13 @@
-function identity() {}
+function identity(param) {
+  return param
+}
 
-function identityF() {}
+function identityF(param) {
+    let ans = ()=> param
+    return ans
+}
 
-function add() {}
+function add() {} 
 
 function subtract() {}
 

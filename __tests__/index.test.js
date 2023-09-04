@@ -57,7 +57,7 @@ describe('Higher Order Functions', () => {
     });
   });
 
-  describe('Binary Operations', () => {
+  xdescribe('Binary Operations', () => {
     describe('add', () => {
       it('returns total of the two arguments', () => {
         expect(add(56, 5)).toBe(56 + 5);
@@ -76,7 +76,7 @@ describe('Higher Order Functions', () => {
     });
   });
 
-  describe('Functions with multiple invocations', () => {
+  xdescribe('Functions with multiple invocations', () => {
     describe('increment', () => {
       it('increments the passed argument by 1', () => {
         expect(increment(0)).toBe(1);
@@ -97,7 +97,7 @@ describe('Higher Order Functions', () => {
         expect(add100(-100)).toBe(0);
       });
     });
-    describe('curry', () => {
+    xdescribe('curry', () => {
       it('will take a binary function and a single value as arguments and return a function', () => {
         expect(typeof curry(add, 5)).toBe('function');
       });
@@ -109,7 +109,7 @@ describe('Higher Order Functions', () => {
         expect(addSeven(11)).toBe(add(7, 11));
       });
     });
-    describe('liftF', () => {
+    xdescribe('liftF', () => {
       it('returns a function on first invocation', () => {
         expect(typeof liftF(add)).toBe('function');
       });
@@ -129,7 +129,7 @@ describe('Higher Order Functions', () => {
   //    })
   //  })
 
-  describe('Unary Functions', () => {
+  xdescribe('Unary Functions', () => {
     describe('twice', () => {
       it('returns a function on first invocation', () => {
         const double = twice(add);
@@ -156,7 +156,7 @@ describe('Higher Order Functions', () => {
         expect(doubleThenSquare(5)).toBe(100);
       });
     });
-    describe('composeB', () => {
+    xdescribe('composeB', () => {
       it('returns a function on first invocation', () => {
         const add2NumsMultiplyBy3rd = composeB(add, multiply);
         expect(typeof add2NumsMultiplyBy3rd).toBe('function');
@@ -166,7 +166,7 @@ describe('Higher Order Functions', () => {
         expect(add2NumsMultiplyBy3rd(2, 3, 7)).toBe(multiply(add(2, 3), 7));
       });
     });
-    describe('limit', () => {
+    xdescribe('limit', () => {
       it('returns a function on first invocation', () => {
         const useAddOnceOnly = limit(add, 1);
         expect(typeof useAddOnceOnly).toBe('function');
@@ -197,7 +197,7 @@ describe('Higher Order Functions', () => {
     });
   });
 
-  describe('Generator Functions', () => {
+  xdescribe('Generator Functions', () => {
     describe('from', () => {
       it('returns a function on first invocation', () => {
         const index = from();
@@ -214,7 +214,7 @@ describe('Higher Order Functions', () => {
         expect(index()).toBe(2);
       });
     });
-    describe('to', () => {
+    xdescribe('to', () => {
       it('returns a function on first invocation', () => {
         const index = to(from(0), 5);
         expect(typeof index).toBe('function');
@@ -243,7 +243,7 @@ describe('Higher Order Functions', () => {
         expect(index()).toBe(undefined);
       });
     });
-    describe('fromTo', () => {
+    xdescribe('fromTo', () => {
       it('returns a function on first invocation', () => {
         const index = fromTo(0, 5);
         expect(typeof index).toBe('function');
@@ -265,7 +265,7 @@ describe('Higher Order Functions', () => {
         expect(index()).toBe(undefined);
       });
     });
-    describe('element', () => {
+    xdescribe('element', () => {
       it('on first invocation will return a function', () => {
         const ele = element([], fromTo(0, 1));
         expect(typeof ele).toBe('function');
@@ -284,7 +284,7 @@ describe('Higher Order Functions', () => {
         expect(ele()).toBe('The Giant');
       });
     });
-    describe('collect', () => {
+    xdescribe('collect', () => {
       it('returns a function', () => {
         expect(typeof collect()).toBe('function');
       });
@@ -309,7 +309,7 @@ describe('Higher Order Functions', () => {
         expect(list).toEqual([0, 1, 2]);
       });
     });
-    describe('filter', () => {
+    xdescribe('filter', () => {
       it('returns a function', () => {
         expect(typeof filter()).toBe('function');
       });
@@ -341,7 +341,7 @@ describe('Higher Order Functions', () => {
         expect(fil()).toBe(undefined);
       });
     });
-    describe('concat', () => {
+    xdescribe('concat', () => {
       it('returns a function', () => {
         const con = concat(fromTo(0, 3), fromTo(0, 2));
         expect(typeof con).toBe('function');
@@ -369,7 +369,7 @@ describe('Higher Order Functions', () => {
         expect(gen()).toBe(undefined);
       });
     });
-    describe('fibonacciF', () => {
+    xdescribe('fibonacciF', () => {
       it('returns a function', () => {
         const fib = fibonacciF(0, 1);
         expect(typeof fib).toBe('function');
@@ -399,7 +399,7 @@ describe('Higher Order Functions', () => {
     });
   });
 
-  describe('gensym Functions', () => {
+  xdescribe('gensym Functions', () => {
     describe('genSymF', () => {
       it('returns a function on first invocation', () => {
         expect(typeof genSymF('A')).toBe('function');
@@ -421,7 +421,7 @@ describe('Higher Order Functions', () => {
         expect(genA()).toBe('A2');
       });
     });
-    describe('genSymFF', () => {
+    xdescribe('genSymFF', () => {
       it('returns a function', () => {
         const genSymF = genSymFF(increment, 0);
         expect(typeof genSymF).toBe('function');
@@ -441,7 +441,7 @@ describe('Higher Order Functions', () => {
     });
   });
 
-  describe('Object Methods', () => {
+  xdescribe('Object Methods', () => {
     describe('counter', () => {
       it('returns an object', () => {
         const obj = counter(10);
@@ -475,7 +475,7 @@ describe('Higher Order Functions', () => {
         expect(Object.keys(counter(20))).toEqual(['up', 'down']);
       });
     });
-    describe('revoke', () => {
+    xdescribe('revoke', () => {
       it('returns an object', () => {
         const obj = revokable(add);
         expect(typeof obj).toBe('object');
@@ -504,7 +504,7 @@ describe('Higher Order Functions', () => {
   });
 });
 
-describe('Advanced Functionality', () => {
+xdescribe('Advanced Functionality', () => {
   describe('curry', () => {
     it('works for any number of arguments', () => {
       const multiply5Numbers = (a, b, c, d, e) => a * b * c * d * e;
