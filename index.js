@@ -62,11 +62,23 @@ function twice(func1) {
   return innerFunc
 }
 
-function composeU() {}
+function composeU(func1, func2) {
+  function func3(num) {
+    return func2(func1(num))
+  }
+  return func3
+}
 
-function composeB() {}
+function composeB(func1, func2) {
+  function func3(num1, num2, num3) {
+    return func2(func1(num1,num2),num3)
+  }
+  return func3
+}
 
-function limit() {}
+function limit() {
+  
+}
 
 function from() {}
 
