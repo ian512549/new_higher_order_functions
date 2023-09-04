@@ -30,9 +30,15 @@ function addF(num1) {
     return ans
 }
 
-function curry() {}
+function curry(binaryFunc, num1) {
+  let ans = (num2)=> binaryFunc(num1, num2)
+  return ans
+}
 
-function liftF() {}
+function liftF(func1) {
+  let ans = (num1)=> (num2) => func1(num1,num2)
+  return ans
+}
 
 function twice() {}
 
